@@ -50,6 +50,18 @@ def lcs(x,y,s1,s2):
                 else:
                     dp[i][j] = max(dp[i][j-1], dp[i-1][j])
     
-    return dp[x][y]
+    ans = ""
+    while x>0 and j>0:
+        if s1[x-1] == s2[y-1]:
+            ans+=s1[x-1]
+            x-=1
+            y-=1
+        
+        else:
 
+            if dp[x-1][y] >= dp[x][y-1]:
+                x-=1
+            else:
+                y-=1
+    return ans[::-1]
 print(lcs(3,2,'ABC', "AC"))
