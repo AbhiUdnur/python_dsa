@@ -44,7 +44,7 @@ def lcs(x,y,s1,s2):
                 dp[i][j] = 0
             
             else:
-                if s1[x-1] == s2[y-1]:
+                if s1[i-1] == s2[j-1]:
                     dp[i][j] = 1 + dp[i-1][j-1]
             
                 else:
@@ -58,10 +58,11 @@ def lcs(x,y,s1,s2):
             y-=1
         
         else:
-
             if dp[x-1][y] >= dp[x][y-1]:
                 x-=1
             else:
                 y-=1
+                
     return ans[::-1]
+
 print(lcs(3,2,'ABC', "AC"))
